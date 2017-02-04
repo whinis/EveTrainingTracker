@@ -27,7 +27,6 @@ if(isset($_GET['code'])){
 
         if(!isset( $_SESSION['accountID'])) {
             $accounts = $db->selectWhere("characters", ['charID' => $userInfo['CharacterID']], ['accountID']);
-            var_dump($accounts);
             if ($accounts->rows == 0) {
                 $result = $db->insert("accounts", ['mainCharacter' => $userInfo['CharacterName']]);
                 $db->insert("characters", ['charID' => $userInfo['CharacterID'], 'refreshToken' => $_SESSION['CCP']['access']['refresh_token'], 'accountID' => $db->lastid]);
