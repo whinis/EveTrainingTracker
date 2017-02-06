@@ -54,6 +54,7 @@ class ccpOAuth {
             }
             $this->curl->setHeader("Authorization", "Basic " . base64_encode($this->clientID . ":" . $this->secret));
             $result = $this->curl->post("https://" . $this->loginURL . "/oauth/token", $oauthArray);
+            var_dump($result);
             $accessArray = json_decode($result, true);
             if (session_status() == PHP_SESSION_ACTIVE&& $sessionSave) {
                 $_SESSION['CCP']=array();

@@ -266,6 +266,14 @@ class db
 				$this->printQuery();
 			$this->debugQuery=false;
 
+            if(strtolower(substr($query,0,6))=="select"){
+                $this->type="select";
+            }elseif(strtolower(substr($query,0,6))=="insert"){
+                $this->type="insert";
+            }else{
+                $this->type="";
+            }
+
 			#run query
 			$result=$this->ref->query($query);
 			$this->queries++;
